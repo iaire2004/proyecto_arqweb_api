@@ -10,7 +10,7 @@
 ### **Estasdisticas de Jugador**: Registro de las estadísticas de un jugador en un partido específico, como goles y asistencias.
 ## Servicios expuestos a traves de la API:
 ### Ademas de las acciones CRUD (POST, GET, PUT, DELETE) que se pueden realizar sobre las entidades, tambien se pueden realizar otras acciones, como por ejemplo:
-## Listar jugadores de un equipo específico:
-## Listar equipos de una liga específica:
-## Obtener las estadísticas de un jugador en un partido específico:
+### Listar jugadores de un equipo específico
+### Listar equipos de una liga específica
+### Obtener las estadísticas de un jugador en un partido específico
 
