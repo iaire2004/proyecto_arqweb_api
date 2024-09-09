@@ -18,29 +18,25 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 
 #### 1. Crear jugador
 - **Método HTTP**: `POST/api/jugador`
-- **Descripción**: Crea un nuevo jugador en el sistema.
 - **Status Codes**:
   - `201 - Created`: Jugador creado exitosamente.
   - `400 - Bad Request`: Datos del jugador faltan o son incorrectos.
 
 #### 2. Obtener jugador por ID
 - **Método HTTP**: `GET/api/jugador/{id}`
-- **Descripción**: Obtiene los detalles de un jugador por su ID.
-- **Status Codes**:
+  - **Status Codes**:
   - `200 - OK`: Jugador obtenido correctamente.
   - `404 - Not Found`: Jugador no encontrado.
 
 #### 3. Actualizar jugador por ID
 - **Método HTTP**: `PUT/api/jugador/{id}`
-- **Descripción**: Actualiza la información de un jugador por su ID.
-- **Status Codes**:
+  - **Status Codes**:
   - `200 - OK`: Jugador actualizado correctamente.
   - `404 - Not Found`: Jugador no encontrado.
 
 #### 4. Eliminar jugador por ID
 - **Método HTTP**: `DELETE/api/jugador/{id}`
-- **Descripción**: Elimina a un jugador del sistema por su ID.
-- **Status Codes**:
+  - **Status Codes**:
   - `200 - OK`: Jugador eliminado correctamente.
   - `404 - Not Found`: Jugador no encontrado.
 
