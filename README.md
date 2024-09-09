@@ -12,7 +12,7 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 
 ---
 ## Servicios expuestos a traves de la API:
-## Endpoints y Status Codes:
+## Endpoints y Status Codes para acciones CRUD sobre las entidades:
 
 ### **Endpoints para Jugador**:
 
@@ -126,3 +126,9 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 
 
 ### **Endpoints para Reportes Adicionales**
+#### 1. Obtener todos los juagdores de un equipo especifico.
+- **Método HTTP**: `GET/api/jugadoresPorEquipo/{equipoId}`
+
+#### 2. Obtener goleador de uan liga especifica.
+- **Método HTTP**: `GET/api/maximoGoleador/{ligaId}`
+## .........
