@@ -126,3 +126,4 @@ Este sistema está diseñado para gestionar la información relacionada con juga
   - `200 - OK`
   - `404 - Not Found`
 
+### **Endpoints para Reportes Adicionales**
