@@ -17,25 +17,25 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 ### **Endpoints para Jugador**:
 
 #### 1. Crear jugador
-- **Método HTTP**: `POST/api/jugador`
+- **Método HTTP**: `POST/api/jugadores`
 - **Status Codes**:
   - `201 - Created`: Jugador creado exitosamente.
   - `400 - Bad Request`: Datos del jugador faltan o son incorrectos.
 
 #### 2. Obtener jugador por ID
-- **Método HTTP**: `GET/api/jugador/{id}`
+- **Método HTTP**: `GET/api/jugadores/{id}`
 - **Status Codes**:
   - `200 - OK`: Jugador obtenido correctamente.
   - `404 - Not Found`: Jugador no encontrado.
 
 #### 3. Actualizar jugador por ID
-- **Método HTTP**: `PUT/api/jugador/{id}`
+- **Método HTTP**: `PUT/api/jugadores/{id}`
 - **Status Codes**:
   - `200 - OK`: Jugador actualizado correctamente.
   - `404 - Not Found`: Jugador no encontrado.
 
 #### 4. Eliminar jugador por ID
-- **Método HTTP**: `DELETE/api/jugador/{id}`
+- **Método HTTP**: `DELETE/api/jugadores/{id}`
 - **Status Codes**:
   - `200 - OK`: Jugador eliminado correctamente.
   - `404 - Not Found`: Jugador no encontrado.
@@ -45,26 +45,26 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 ### **Endpoints para Equipo**
 
 #### 1. Crear equipo
-- **Método HTTP**: `POST/api/equipo`
+- **Método HTTP**: `POST/api/equipos`
 - **Status Codes**:
   - `201 - Created`: Equipo creado exitosamente.
   - `400 - Bad Request`: Datos del equipo faltan o son incorrectos.
 
 
 #### 2. Obtener equipo por ID
-- **Método HTTP**: `GET/api/equipo/{id}`
+- **Método HTTP**: `GET/api/equipos/{id}`
 - **Status Codes**:
   - `200 - OK`: Equipo obtenido correctamente.
   - `404 - Not Found`: Equipo no encontrado.
 
 #### 3. Actualizar equipo por ID
-- **Método HTTP**: `PUT/api/equipo/{id}`
+- **Método HTTP**: `PUT/api/equipos/{id}`
 - **Status Codes**:
   - `200 - OK`: Equipo actualizado correctamente.
   - `404 - Not Found`: Equipo no encontrado.
  
 #### 4. Eliminar equipo por ID
-- **Método HTTP**: `DELETE/api/equipo/{id}`
+- **Método HTTP**: `DELETE/api/equipos/{id}`
 - **Status Codes**:
   - `200 - OK`: Equipo eliminado correctamente.
   - `404 - Not Found`: Equipo no encontrado
@@ -73,26 +73,26 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 
 ### **Endpoints para Liga**
 #### 1. Crear liga
-- **Método HTTP**: `POST/api/liga`
+- **Método HTTP**: `POST/api/ligas`
 - **Status Codes**:
   - `201 - Created`: Liga creado exitosamente.
   - `400 - Bad Request`: Datos de la liga faltan o son incorrectos.
 
 
 #### 2. Obtener liga por ID
-- **Método HTTP**: `GET/api/liga/{id}`
+- **Método HTTP**: `GET/api/ligas/{id}`
 - **Status Codes**:
   - `200 - OK`: Liga obtenida correctamente.
   - `404 - Not Found`: Liga no encontrada.
 
 #### 3. Actualizar liga por ID
-- **Método HTTP**: `PUT/api/liga/{id}`
+- **Método HTTP**: `PUT/api/ligas/{id}`
 - **Status Codes**:
   - `200 - OK`: Liga actualizada correctamente.
   - `404 - Not Found`: Liga no encontrada.
 
 #### 4. Eliminar liga por ID
-- **Método HTTP**: `DELETE/api/liga/{id}`
+- **Método HTTP**: `DELETE/api/ligas/{id}`
 - **Status Codes**:
   - `200 - OK`: Liga eliminada correctamente.
   - `404 - Not Found`: Liga no encontrada
@@ -101,25 +101,25 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 
 ### **Endpoints para Partido**
 #### 1. Crear partido
-- **Método HTTP**: `POST/api/partido`
+- **Método HTTP**: `POST/api/partidos`
 - **Status Codes**:
    - `200 - OK`: Partido obtenido correctamente.
    - `404 - Not Found`: Partido no encontrado.
 
 #### 2. Obtener partido por ID
-- **Método HTTP**: `GET/api/partido/{id}`
+- **Método HTTP**: `GET/api/partidos/{id}`
 - **Status Codes**:
   - `200 - OK`: Partido obtenido correctamente.
   - `404 - Not Found`: Partido no encontrado
 
 #### 3. Actualizar partido por ID
-- **Método HTTP**: `PUT/api/partido/{id}`
+- **Método HTTP**: `PUT/api/partidos/{id}`
 - **Status Codes**:
   - `200 - OK`: Partido actualizado correctamente.
   - `404 - Not Found`: Partido no encontrado.
 
 #### 4. Eliminar partido por ID
-- **Método HTTP**: `DELETE/api/partido/{id}`
+- **Método HTTP**: `DELETE/api/partidos/{id}`
 - **Status Codes**:
   - `200 - OK`: Partido eliminado correctamente.
   - `404 - Not Found`: Partido no encontrado.
