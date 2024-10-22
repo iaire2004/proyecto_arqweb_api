@@ -37,7 +37,7 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 #### 4. Eliminar jugador por ID
 - **Método HTTP**: `DELETE/api/jugadores/{id}`
 - **Status Codes**:
-  - `200 - OK`: Jugador eliminado correctamente.
+  - `204 - OK`: Jugador eliminado correctamente.
   - `404 - Not Found`: Jugador no encontrado.
 
 ---
