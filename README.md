@@ -138,7 +138,7 @@ Este sistema está diseñado para gestionar la información relacionada con juga
   - `200 - OK`
   - `404 - Not Found`: No se encontraron jugadores para este partido.
  
-#### #. Filtrar jugadores por edad mínima.
+#### 3. Filtrar jugadores por edad mínima.
 - **Método HTTP**: `GET/api/jugadores?edadMinima={edadespecifica}`
 - - **Status Codes**:
   - `200 - OK`
