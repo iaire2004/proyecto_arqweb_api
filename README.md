@@ -126,9 +126,21 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 
 
 ### **Endpoints para Reportes Adicionales**
-#### 1. Obtener todos los juagdores de un equipo especifico.
-- **Método HTTP**: `GET/api/jugadoresPorEquipo/{equipoId}`
+#### 1. Obtener equipos por liga.
+- **Método HTTP**: `GET/api/ligas/{id}/equipos`
+- **Status Codes**:
+  - `200 - OK`
+  - `404 - Not Found`: No se encontraron equipos para esta liga.
 
-#### 2. Obtener goleador de uan liga especifica.
-- **Método HTTP**: `GET/api/maximoGoleador/{ligaId}`
+#### 2. Buscar jugadores que jugaron un partido.
+- **Método HTTP**: `GET/api/partidos/{id}/jugadores`
+- - **Status Codes**:
+  - `200 - OK`
+  - `404 - Not Found`: No se encontraron jugadores para este partido.
+ 
+#### #. Filtrar jugadores por edad mínima.
+- **Método HTTP**: `GET/api/jugadores?edadMinima={edadespecifica}`
+- - **Status Codes**:
+  - `200 - OK`
+  - `404 - Not Found`: No se encontraron jugadores para este partido.
 ## .........
