@@ -7,12 +7,12 @@ app.use(express.json());
 
 // Array de jugadores
 let jugadores = [
-    { id: 1, nombre: 'Ansu Fati', edad: 21, posicion: 'Delantero', equipo: 'Barcelona' },
-    { id: 2, nombre: 'Frenkie de Jong', edad: 26, posicion: 'Centrocampista', equipo: 'Barcelona' },
-    { id: 3, nombre: 'Vinícius Júnior', edad: 23, posicion: 'Delantero', equipo: 'Real Madrid' },
-    { id: 4, nombre: 'Kylian Mbappé', edad: 25, posicion: 'Delantero', equipo: 'Real Madrid' }, 
-    { id: 5, nombre: 'Marcus Rashford', edad: 26, posicion: 'Delantero', equipo: 'Manchester United' },
-    { id: 6, nombre: 'Bruno Fernandes', edad: 29, posicion: 'Centrocampista', equipo: 'Manchester United' },
+    { id: 1, nombre: 'Ansu Fati', edad: 21, posicion: 'Delantero', idEquipo: 1 },
+    { id: 2, nombre: 'Frenkie de Jong', edad: 26, posicion: 'Centrocampista', idEquipo: 1 },
+    { id: 3, nombre: 'Vinícius Júnior', edad: 23, posicion: 'Delantero', idEquipo: 2 },
+    { id: 4, nombre: 'Kylian Mbappé', edad: 25, posicion: 'Delantero', idEquipo: 2 }, 
+    { id: 5, nombre: 'Marcus Rashford', edad: 26, posicion: 'Delantero', idEquipo: 3 },
+    { id: 6, nombre: 'Bruno Fernandes', edad: 29, posicion: 'Centrocampista', idEquipo: 3 },
 ];
 
 
@@ -31,9 +31,10 @@ let ligas = [
 
 // Array de partidos
 let partidos = [
-    { id: 1, equipoLocal: 'Barcelona', equipoVisitante: 'Real Madrid', fecha: '2024-10-30', liga: 'La Liga' },
-    { id: 2, equipoLocal: 'Manchester United', equipoVisitante: 'Barcelona', fecha: '2024-11-05', liga: 'Premier League' },
+    { id: 1, equipoLocal: 1, equipoVisitante: 2, fecha: '2024-10-30', ligaId: 1 }, // 'La Liga'
+    { id: 2, equipoLocal: 3, equipoVisitante: 1, fecha: '2024-11-05', ligaId: 2 }, // 'Premier League'
 ];
+
 
 // -----------------------------------------
 // Rutas para jugadores
@@ -43,11 +44,11 @@ app.get('/', function(req, res) {
 });
 
 // Obtener todos los jugadores
-app.get('/api/jugadores', function(req, res) {
+/*app.get('/api/jugadores', function(req, res) {
     console.log(req);
     res.json(jugadores);
 });
-
+*/
 
 // Obtener un jugador por ID
 app.get('/api/jugadores/:id', function(req, res) {
@@ -62,7 +63,7 @@ app.post('/api/jugadores', function(req, res) {
     const nuevoJugador = req.body;
 
     // Validar que todos los campos estén
-    if (!nuevoJugador.nombre || !nuevoJugador.edad || !nuevoJugador.posicion || !nuevoJugador.equipo) {
+    if (!nuevoJugador.nombre || !nuevoJugador.edad || !nuevoJugador.posicion || !nuevoJugador.idEquipo) {
         return res.status(400).send('Todos los campos son obligatorios.');
     }
     nuevoJugador.id = jugadores.length + 1;
@@ -76,11 +77,11 @@ app.put('/api/jugadores/:id', function(req, res) {
     const jugador = jugadores.find(j => j.id == id);
     if (!jugador) return res.status(404).send('Jugador no encontrado.');
 
-    const { nombre, edad, posicion, equipo } = req.body;
+    const { nombre, edad, posicion, idEquipo } = req.body; 
     if (nombre) jugador.nombre = nombre;
     if (edad) jugador.edad = edad;
     if (posicion) jugador.posicion = posicion;
-    if (equipo) jugador.equipo = equipo;
+    if (idEquipo) jugador.idEquipo = idEquipo; 
 
     res.json(jugador);
 });
@@ -113,7 +114,7 @@ app.post('/api/equipos', function(req, res) {
     const nuevoEquipo = req.body;
 
     // Validar que todos los campos estén
-    if (!nuevoEquipo.nombre || !nuevoEquipo.liga) {
+    if (!nuevoEquipo.nombre || !nuevoEquipo.ligaId) {
         return res.status(400).send('Todos los campos son obligatorios.');
     }
     nuevoEquipo.id = equipos.length + 1;
@@ -126,9 +127,9 @@ app.put('/api/equipos/:id', function(req, res) {
     const equipo = equipos.find(e => e.id == id);
     if (!equipo) return res.status(404).send('Equipo no encontrado.');
 
-    const { nombre, liga } = req.body;
+    const { nombre, ligaId } = req.body;
     if (nombre) equipo.nombre = nombre;
-    if (liga) equipo.liga = liga;
+    if (ligaId) equipo.ligaId = ligaId;
 
     res.json(equipo);
 });
@@ -206,10 +207,12 @@ app.post('/api/partidos', function(req, res) {
     const nuevoPartido = req.body;
 
     // Validar que todos los campos estén
-    if (!nuevoPartido.equipoLocal || !nuevoPartido.equipoVisitante || !nuevoPartido.fecha || !nuevoPartido.liga) {
+    if (!nuevoPartido.equipoLocal || !nuevoPartido.equipoVisitante || !nuevoPartido.fecha || !nuevoPartido.ligaId) {
         return res.status(400).send('Todos los campos son obligatorios.');
     }
-    nuevoPartido.id = partidos.length + 1;
+
+    // Asignar un nuevo ID al partido
+    nuevoPartido.id = partidos.length + 1; // Asegúrate de que se agregue el ID
     partidos.push(nuevoPartido);
     res.status(201).json(nuevoPartido);
 });
@@ -219,11 +222,11 @@ app.put('/api/partidos/:id', function(req, res) {
     const partido = partidos.find(p => p.id == id);
     if (!partido) return res.status(404).send('Partido no encontrado.');
 
-    const { equipoLocal, equipoVisitante, fecha, liga } = req.body;
+    const { equipoLocal, equipoVisitante, fecha, ligaId } = req.body;
     if (equipoLocal) partido.equipoLocal = equipoLocal;
     if (equipoVisitante) partido.equipoVisitante = equipoVisitante;
     if (fecha) partido.fecha = fecha;
-    if (liga) partido.liga = liga;
+    if (ligaId) partido.ligaId = ligaId; // Asegúrate de usar solo ligaId
 
     res.json(partido);
 });
@@ -239,7 +242,7 @@ app.delete('/api/partidos/:id', function(req, res) {
 
 
 // Obtener equipos por liga
-app.get('/api/equipos/ligas/:id', (req, res) => {
+app.get('/api/ligas/:id/equipos', function(req, res) {
     const ligaId = parseInt(req.params.id);
     const equiposDeLiga = equipos.filter(equipo => equipo.ligaId === ligaId);
 
@@ -251,7 +254,7 @@ app.get('/api/equipos/ligas/:id', (req, res) => {
 });
 
 // Buscar jugadores que jugaron un partido
-app.get('/api/partido/:id/jugadores', (req, res) => {
+app.get('/api/partidos/:id/jugadores', function(req, res) {
     const partidoId = parseInt(req.params.id);
     
     // Encuentra el partido por ID
@@ -263,7 +266,7 @@ app.get('/api/partido/:id/jugadores', (req, res) => {
 
     // Encuentra los jugadores que pertenecen a los equipos que jugaron en el partido
     const jugadoresEnPartido = jugadores.filter(jugador => 
-        jugador.equipo === partido.equipoLocal || jugador.equipo === partido.equipoVisitante
+        jugador.idEquipo === partido.equipoLocal || jugador.idEquipo === partido.equipoVisitante
     );
 
     if (jugadoresEnPartido.length > 0) {
@@ -273,6 +276,20 @@ app.get('/api/partido/:id/jugadores', (req, res) => {
     }
 });
 
+
+// Filtrar jugadores por edad mínima
+app.get('/api/jugadores', function(req, res) {
+    const edadMinima = parseInt(req.query.edadMinima);
+
+    const jugadoresFiltrados = jugadores.filter(jugador => jugador.edad >= edadMinima);
+    
+    if (jugadoresFiltrados.length === 0) {
+        return res.status(404).json({ message: 'No se encontraron jugadores con la edad mínima especificada.' });
+    }
+
+    // Devuelve la lista de jugadores filtrados
+    res.status(200).json(jugadoresFiltrados);
+});
 
 // -----------------------------------------
 // Inicializar el servidor en el puerto 3000
