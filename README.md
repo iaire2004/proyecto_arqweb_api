@@ -37,7 +37,7 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 #### 4. Eliminar jugador por ID
 - **Método HTTP**: `DELETE/api/jugadores/{id}`
 - **Status Codes**:
-  - `204 - OK`: Jugador eliminado correctamente.
+  - `204 - OK`: Jugador eliminado correctamente(Sin contenido).
   - `404 - Not Found`: Jugador no encontrado.
 
 ---
@@ -66,7 +66,7 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 #### 4. Eliminar equipo por ID
 - **Método HTTP**: `DELETE/api/equipos/{id}`
 - **Status Codes**:
-  - `200 - OK`: Equipo eliminado correctamente.
+  - `204 - OK`: Equipo eliminado correctamente(Sin contenido).
   - `404 - Not Found`: Equipo no encontrado
 
 ---
@@ -94,7 +94,7 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 #### 4. Eliminar liga por ID
 - **Método HTTP**: `DELETE/api/ligas/{id}`
 - **Status Codes**:
-  - `200 - OK`: Liga eliminada correctamente.
+  - `204 - OK`: Liga eliminada correctamente(Sin contenido).
   - `404 - Not Found`: Liga no encontrada
 
 ---
@@ -103,8 +103,8 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 #### 1. Crear partido
 - **Método HTTP**: `POST/api/partidos`
 - **Status Codes**:
-   - `200 - OK`: Partido obtenido correctamente.
-   - `404 - Not Found`: Partido no encontrado.
+   - `201 - OK`: Partido obtenido correctamente.
+   - `400 - Not Found`: Partido no encontrado.
 
 #### 2. Obtener partido por ID
 - **Método HTTP**: `GET/api/partidos/{id}`
@@ -121,7 +121,7 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 #### 4. Eliminar partido por ID
 - **Método HTTP**: `DELETE/api/partidos/{id}`
 - **Status Codes**:
-  - `200 - OK`: Partido eliminado correctamente.
+  - `204 - OK`: Partido eliminado correctamente(Sin contenido).
   - `404 - Not Found`: Partido no encontrado.
 
 
@@ -144,3 +144,33 @@ Este sistema está diseñado para gestionar la información relacionada con juga
   - `200 - OK`
   - `404 - Not Found`:No se encontraron jugadores con la edad mínima especificada.
 ## .........
+
+#### Body Jugador:
+{
+    "nombre": "Lionel Messi",
+    "edad": 34,
+    "posicion": "Delantero",
+    "idEquipo": 1
+}
+
+#### Body Equipo:
+{
+    "nombre": "Barcelona",
+    "ligaId": 1
+}
+
+
+#### Body Liga:
+{
+    "nombre": "La Liga"
+}
+
+
+#### Body Partido:
+{
+    "equipoLocal": 1,
+    "equipoVisitante": 2,
+    "fecha": "2024-10-30",
+    "ligaId": 1
+}
+
