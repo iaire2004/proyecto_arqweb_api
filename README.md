@@ -142,5 +142,5 @@ Este sistema está diseñado para gestionar la información relacionada con juga
 - **Método HTTP**: `GET/api/jugadores?edadMinima={edadespecifica}`
 - - **Status Codes**:
   - `200 - OK`
-  - `404 - Not Found`: No se encontraron jugadores para este partido.
+  - `404 - Not Found`:No se encontraron jugadores con la edad mínima especificada.
 ## .........
