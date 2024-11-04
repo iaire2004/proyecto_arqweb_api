@@ -1,4 +1,4 @@
-console.log('Iniciando el servidor...'); // Mensaje para verificar que el script se está ejecutando
+console.log('Iniciando el servidor...'); 
 const express = require('express');
 
 const app = express();
@@ -55,7 +55,7 @@ app.get('/api/jugadores/:id', function(req, res) {
     const { id } = req.params;
     const jugador = jugadores.find(j => j.id == id);
     if (!jugador) return res.status(404).send('Jugador no encontrado.');
-    res.json(jugador); // Responder con el jugador encontrado
+    res.json(jugador); 
 });
 
 // Agregar un nuevo jugador
@@ -92,8 +92,8 @@ app.delete('/api/jugadores/:id', function(req, res) {
     const jugadorExistente = jugadores.find(j => j.id == id);
     if (!jugadorExistente) return res.status(404).send('Jugador no encontrado.');
 
-    jugadores = jugadores.filter(j => j.id != id); // Filtrar la lista
-    res.status(204).send(); // Responder con No Content
+    jugadores = jugadores.filter(j => j.id != id); // Filtrar la lista, para mostrar sin el jugador eliminado
+    res.status(204).send(); // No content
 });
 
 // -----------------------------------------
@@ -107,7 +107,7 @@ app.get('/api/equipos/:id', function(req, res) {
     const { id } = req.params;
     const equipo = equipos.find(e => e.id == id);
     if (!equipo) return res.status(404).send('Equipo no encontrado.');
-    res.json(equipo); // Responder con el equipo encontrado
+    res.json(equipo); 
 });
 
 app.post('/api/equipos', function(req, res) {
@@ -212,7 +212,7 @@ app.post('/api/partidos', function(req, res) {
     }
 
     // Asignar un nuevo ID al partido
-    nuevoPartido.id = partidos.length + 1; // Asegúrate de que se agregue el ID
+    nuevoPartido.id = partidos.length + 1; 
     partidos.push(nuevoPartido);
     res.status(201).json(nuevoPartido);
 });
@@ -226,7 +226,7 @@ app.put('/api/partidos/:id', function(req, res) {
     if (equipoLocal) partido.equipoLocal = equipoLocal;
     if (equipoVisitante) partido.equipoVisitante = equipoVisitante;
     if (fecha) partido.fecha = fecha;
-    if (ligaId) partido.ligaId = ligaId; // Asegúrate de usar solo ligaId
+    if (ligaId) partido.ligaId = ligaId; 
 
     res.json(partido);
 });
@@ -240,6 +240,7 @@ app.delete('/api/partidos/:id', function(req, res) {
     res.status(204).send(); // Responder con No Content
 });
 
+// -----------------------------------------
 
 // Obtener equipos por liga
 app.get('/api/ligas/:id/equipos', function(req, res) {
@@ -280,15 +281,17 @@ app.get('/api/partidos/:id/jugadores', function(req, res) {
 // Filtrar jugadores por edad mínima
 app.get('/api/jugadores', function(req, res) {
     const edadMinima = parseInt(req.query.edadMinima);
-
-    const jugadoresFiltrados = jugadores.filter(jugador => jugador.edad >= edadMinima);
     
-    if (jugadoresFiltrados.length === 0) {
-        return res.status(404).json({ message: 'No se encontraron jugadores con la edad mínima especificada.' });
+    if (edadMinima) {
+        const jugadoresFiltrados = jugadores.filter(jugador => jugador.edad >= edadMinima);
+        if (jugadoresFiltrados.length === 0) {
+            return res.status(404).json({ message: 'No se encontraron jugadores con la edad mínima especificada.' });
+        }
+        return res.status(200).json(jugadoresFiltrados);
     }
 
-    // Devuelve la lista de jugadores filtrados
-    res.status(200).json(jugadoresFiltrados);
+    // Si no se proporciona edad mínima, devolver todos los jugadores
+    res.json(jugadores);
 });
 
 // -----------------------------------------
